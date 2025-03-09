@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strinova Pictionary</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="./script.js" type="module"></script>
-</head>
-<body>
-    <canvas id="draw-display"></canvas>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Strinova Pictionary</title>
+		<link rel="stylesheet" href="./reset.css" />
+		<link rel="stylesheet" href="./style.css" />
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="./script.js" type="module"></script>
+	</head>
+	<body
+		x-data="{ roomCode: (new URL(location.href)).searchParams.get(`room`) ?? null }"
+		x-effect="() => {
+
+    }"
+	>
+		<template x-if="!roomCode">
+			<main class="lobby-page">
+				<div class="home-screen-card">
+					<div class="home-screen-card--logo">
+						LOGO AND TITLE HERE
+					</div>
+					<div class="home-screen-card--character-customization">
+						<div class="character-customization--preview"></div>
+						<div class="character-customization--right">
+							<input class="character-customization--username-input" placeholder="Username:">
+							<div class="character-customization--choices"></div>
+						</div>
+					</div>
+					<button
+						class="btn home-screen-card--create-room-btn"
+						@click="
+							fetch(`/create-room`, {
+								method: `post`
+							}).then(() => {
+
+							}).catch((err) => {
+								console.error(err);
+							})
+							"
+					>
+						Create Room
+					</button>
+				</div>
+			</main>
+		</template>
+		<template x-if="roomCode">
+			<canvas id="draw-display"></canvas>
+		</template>
+	</body>
 </html>

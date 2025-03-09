@@ -1,8 +1,61 @@
-html, body {
-    padding: 0;
-    margin: 0;
-    background: hsl(170, 18%, 60%);
+.lobby-page {
     width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home-screen-card {
+    width: 700px;
+    height: 550px;
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid purple;
+    border-radius: 60px;
+}
+.home-screen-card--logo {
+    width: 500px;
+    height: 140px;
+    background: firebrick;
+}
+.home-screen-card--character-customization {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+}
+.character-customization--preview {
+    width: 100px;
+    aspect-ratio: 1;
+    background: purple;
+    align-self: center;
+}
+.character-customization--right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.character-customization--username-input {
+    height: 24px;
+    padding: 3px;
+    background: green;
+}
+.character-customization--choices {
+    height: 180px;
+    width: 400px;
+    background: pink;
+}
+.btn {
+    background: rebeccapurple;
+}
+
+.home-screen-card--create-room-btn {
+    padding: 20px;
 }
 #draw-display {
     background: beige;
